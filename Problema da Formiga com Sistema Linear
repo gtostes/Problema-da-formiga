@@ -49,7 +49,7 @@ ld InvDist(int v, int w){ // calcula o inverso da distancia entre v e w;
 	return ans;
 }
 
-void CreateP(){ // cria a função P(v,w) que retorna a probabilidade de ir pra w saindo de v.
+void CreateP(){ // cria a funÃ§Ã£o P(v,w) que retorna a probabilidade de ir pra w saindo de v.
 	for(int i=0; i< V; i++){
 		ld den=0;
 		for(int j=0; j< V; j++){
@@ -58,12 +58,12 @@ void CreateP(){ // cria a função P(v,w) que retorna a probabilidade de ir pra w 
 		}
 		for(int j=0; j< V; j++){
 			if(j!=i) p[i][j] = InvDist(i,j)/den;
-			sp[i][j]= p[i][j] + (j>0 ? sp[i][j-1] : 0); // sp[i][j] guarda a soma p[i][0]+...+p[i][j], servirá para otimizar o código.
+			sp[i][j]= p[i][j] + (j>0 ? sp[i][j-1] : 0); // sp[i][j] guarda a soma p[i][0]+...+p[i][j], servirÃ¡ para otimizar o cÃ³digo.
 		}
 	}
 }
 
-void solve(int DIM, ld& Esperanca, ld& Esperanca_com_Restricao){ // retorna os dois resultados dada a dimensão DIM.
+void solve(int DIM, ld& Esperanca, ld& Esperanca_com_Restricao){ // retorna os dois resultados dada a dimensÃ£o DIM.
 	V = 1<<DIM;
 	CreateP();
 	ll Soma=0, Soma_Rest=0;
@@ -82,7 +82,7 @@ void solve(int DIM, ld& Esperanca, ld& Esperanca_com_Restricao){ // retorna os d
 	vector<ld>T; // vamos resolver o sistema linear e achar T[u]
 	gauss(cT,T);
 	
-	vector<vector<ld>> cE, cER; //os coeficientes para o sistema linear para achar as esperanças, cE guardará o sistema sem restrições e cER com restrições.
+	vector<vector<ld>> cE, cER; //os coeficientes para o sistema linear para achar as esperanÃ§as, cE guardarÃ¡ o sistema sem restriÃ§Ãµes e cER com restriÃ§Ãµes.
 	cE.assign(V,vector<ld>(V+1,0)); cER.assign(V,vector<ld>(V+1,0));
 	
 	for(int i=0; i<V; i++){
