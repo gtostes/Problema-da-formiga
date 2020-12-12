@@ -5,11 +5,11 @@ using namespace std;
 
 ld p[130][130];
 ld sp[130][130];
-int V, DIM;
+int V; //numero de vertices de um cubo/hipercubo.
 
 const double EPS = 1e-9;
 
-void gauss (vector < vector<ld> > a, vector<ld> & ans) {
+void gauss (vector < vector<ld> > a, vector<ld> & ans) { // resolve o sistema linear
     int n = (int) a.size();
     int m = (int) a[0].size() - 1;
 
@@ -104,10 +104,6 @@ void solve(int DIM, ld& Esperanca, ld& Esperanca_com_Restricao){ // retorna os d
 int main(){
 	ios::sync_with_stdio(false);
   	cin.tie(0);
-  	DIM=7;
-	V=1<<DIM;
-	CreateP();
-	ll Soma=0, SomaR=0, iR=0;
 	
 	ld Esperanca_3, Esperanca_com_Restricao_3, Esperanca_7, Esperanca_com_Restricao_7;
 	solve(3, Esperanca_3, Esperanca_com_Restricao_3); solve(7, Esperanca_7, Esperanca_com_Restricao_7);
