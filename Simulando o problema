@@ -17,7 +17,7 @@ ld InvDist(int v, int w){ // calcula o inverso da distancia entre v e w;
 	return ans;
 }
 
-void CreateP(){ // cria a função P(v,w) que retorna a probabilidade de ir pra w saindo de v.
+void CreateP(){ // cria a funÃ§Ã£o P(v,w) que retorna a probabilidade de ir pra w saindo de v.
 	for(int i=0; i< V; i++){
 		ld den=0;
 		for(int j=0; j< V; j++){
@@ -26,13 +26,13 @@ void CreateP(){ // cria a função P(v,w) que retorna a probabilidade de ir pra w 
 		}
 		for(int j=0; j< V; j++){
 			if(j!=i) p[i][j] = InvDist(i,j)/den;
-			sp[i][j]= p[i][j]; // sp[i][j] guarda a soma p[i][0]+...+p[i][j], servirá para otimizar o código.
+			sp[i][j]= p[i][j]; // sp[i][j] guarda a soma p[i][0]+...+p[i][j], servirÃ¡ para otimizar o cÃ³digo.
 			if(j>0) sp[i][j]+=sp[i][j-1];
 		}
 	}
 }
 
-int onde(int u, ld rd){ // recebe um numero rd random entre 0 e 1 e indica pra qual vertice ir. É feita uma busca binária.
+int onde(int u, ld rd){ // recebe um numero rd random entre 0 e 1 e indica pra qual vertice ir. Ã‰ feita uma busca binÃ¡ria.
 	int i=0, f=V-1;
 	while(i!=f){
 		int mid=(i+f)/2;
@@ -42,7 +42,7 @@ int onde(int u, ld rd){ // recebe um numero rd random entre 0 e 1 e indica pra q
 	return i;
 }
 
-void Solve(int DIM, ld &Esperanca, ld& Esperanca_com_Restricao, ll it){ // retorna os valores das Esperanças depois de um numero de iterações it.
+void Solve(int DIM, ld &Esperanca, ld& Esperanca_com_Restricao, ll it){ // retorna os valores das EsperanÃ§as depois de um numero de iteraÃ§Ãµes it.
 	V= 1<<DIM;
 	ll Soma=0, SomaR=0, iR=0;
 	CreateP();
@@ -58,7 +58,7 @@ void Solve(int DIM, ld &Esperanca, ld& Esperanca_com_Restricao, ll it){ // retor
 			u=v;
 		}
 		Soma+=S; // soma o numero de passos nesse ultimo caminho ao total
-		if(i%100000==0) cout << i/100000 << endl; //só pra marcar tempo
+		if(i%100000==0) cout << i/100000 << endl; //sÃ³ pra marcar tempo
 	}
 	Esperanca = (ld) Soma/it; // retorna o valor esperado -> Soma do tamanho de todos os caminhos / Numero de caminhos
 	Esperanca_com_Restricao = (ld) SomaR/iR; // valor esperado -> Soma do tamanho de todos caminhos com a restricao / Numero de caminhos com a restricao.
